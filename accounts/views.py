@@ -37,7 +37,7 @@ def signup_view(request):
         form = SignupForm()
     return render(request, 'accounts/signup.html', {'form': form})
 
-def activate(request, uidb64, token):
+def activate_view(request, uidb64, token):
         try:
             uid = force_text(urlsafe_base64_decode(uidb64))
             user = User.objects.get(id=uid)
