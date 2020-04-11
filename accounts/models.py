@@ -6,8 +6,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    photo = FileField(verbose_name=_("Profile Picture"),
-                     upload_to=upload_to("main.UserProfile.photo", "profiles"),
+    photo = models.FileField(verbose_name=("Profile Picture"),upload = upload_to("main.UserProfile.photo", "profiles"),
                      format="Image",max_lenght=255, null=True, blank=True)
 
 def create_profile(sender, **kwargs):

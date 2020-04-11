@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, update_session_auth_hash, authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -10,6 +10,12 @@ from .token import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from .models import UserProfile
+from .forms import UserForm
+from django.forms.models import inlineformset_factory
+from django.core.exceptions import PermissionDenied
+
 
 
 def signup_view(request):
@@ -102,7 +108,7 @@ def edit_user(request,pk):
                     created_user.save()
                     formset.save()
                     return HttpResponseRedirect('/accounts/userprofile/')
- 
+
         return render(request, "account/account_update.html", {
             "noodle": pk,
             "noodle_form": user_form,
