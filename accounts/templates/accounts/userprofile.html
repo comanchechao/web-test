@@ -1,5 +1,4 @@
 {% extends 'base_layout.html' %}
-{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -8,7 +7,7 @@
       <div class="card-content">
       <h2 class="flow=text"> Update your information</h2>
         <form action="." method="POST"  class="padding">
-          {% scrf_token %} {{ noodle_form.as_p }}
+          {% csrf_token %} {{ noodle_form.as_p }}
           <div class="divider"></div>
           {{ formset.managment_form }}
             {{ formset.as_p }}

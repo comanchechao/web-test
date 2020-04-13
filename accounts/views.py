@@ -116,3 +116,8 @@ def edit_user(request,pk):
         })
     else:
         raise PermissionDenied
+
+
+def profile(request):
+    args = {'user': request.user }
+    return render(request, 'accounts/userprofile.html', args)
