@@ -107,7 +107,7 @@ def edit_user(request,pk):
                 if formset.is_valid():
                     created_user.save()
                     formset.save()
-                    return HttpResponseRedirect('/accounts/userprofile/')
+                    return HttpResponseRedirect('/accounts/profile/')
 
         return render(request, "account/account_update.html", {
             "noodle": pk,
@@ -120,4 +120,4 @@ def edit_user(request,pk):
 
 def profile(request):
     args = {'user': request.user }
-    return render(request, 'accounts/userprofile.html', args)
+    return render(request, 'accounts/profile.html', args)
