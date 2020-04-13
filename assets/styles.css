@@ -1,6 +1,10 @@
 body{
     background-color: #0f121f;
     background-image: url(/static/cyber_city.png);
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-repeat-y: no-repeat;
     color: #fff;
 }
