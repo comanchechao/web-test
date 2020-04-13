@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^profile/$', views.profile, name="profile"),
     url(r'^passwordchange/$', views.passwordchange_view, name="passwordchange"),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',views.activate_view, name="activate"),
-    url(r'^update/(?P<pk>[\-\w]+)/$', views.edit_user, name='account_update'),
+    url(r'^update/(?P<pk>[\-\w]+)/$', views.ProfileUpdateView, name='account_update'),
 ]
