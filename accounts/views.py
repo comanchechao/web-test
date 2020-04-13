@@ -5,16 +5,17 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import SignupForm
+from .forms import SignupForm, UserForm, ProfileForm
 from .token import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import Profile
-from .forms import UserProfileForm
 from django.forms.models import inlineformset_factory
 from django.core.exceptions import PermissionDenied
+from django.views.generic.base import TemplateView
+
 
 
 
@@ -86,33 +87,31 @@ def passwordchange_view(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'accounts/passwordchange.html', {'form': form })
-
 @login_required
-def edit_user(request,pk):
-    user = User.objects.get(pk=pk)
-    user_form = UserProfileForm(instance=user)
+class ProfileUpdateView(TemplateView):
+    user_form = UserForm
+    profile_form = ProfileForm
+    template_name = 'common/profile-update.html'
 
-    ProfileInlineFormset = inlineformset_factory(User, UserProfile, fields=('user', 'bio'))
-    formset = ProfileInlineFormset(instance=user)
+    def post(self, request):
 
-    if request.user.is_authenticated() and request.user.id == user.id:
-        if request.method == "POST":
-            user_form = UserProfileForm(request.POST, request.FILES, instance=user)
-            formset = ProfileInlineFormset(request.POST, request.FILES, instance=user)
+        post_data = request.POST or None
 
-            if user_form.is_valid():
-                created_user = user_form.save(commit=False)
-                formset = ProfileInlineFormset(request.POST, request.FILES, instance=created_user)
+        user_form = UserForm(post_data, instance=request.user)
+        profile_form = ProfileForm(post_data, instance=request.user.profile)
 
-                if formset.is_valid():
-                    created_user.save()
-                    formset.save()
-                    return HttpResponseRedirect('/accounts/userprofile/')
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile was successfully updated!')
+            return HttpResponseRedirect(reverse_lazy('profile'))
 
-        return render(request, "account/account_update.html", {
-            "noodle": pk,
-            "noodle_form": user_form,
-            "formset": formset,
-        })
-    else:
-        raise PermissionDenied
+        context = self.get_context_data(
+                                        user_form=user_form,
+                                        profile_form=profile_form
+                                    )
+
+        return self.render_to_response(context)
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)
