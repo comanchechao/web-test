@@ -6,16 +6,18 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    Image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    birth_date = models.DateField(null=True, blank=True)
 
     def __str__(self):
         return f'{self.user.username} Profile'
 
 
-#def create_profile(sender, **kwargs):
-    #user = kwargs["instance"]
-    #if kwargs["created"]:
-        #user_profile = UserProfile(user=user)
-        #user_profile.save()
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+            Profile.objects.create(user=instance)
 
-#post_save.connect(create_profile,sender = User)
+@receiver(post_save, sender=User)
+def save_user_profile(sender, instance, **kwargs):
+    instance.profile.save()
