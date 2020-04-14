@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 from django.conf import settings
 from articles import views as article_view
 
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^articles/', include('articles.urls')),
