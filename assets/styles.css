@@ -5,7 +5,6 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-repeat-y: no-repeat;
     color: #fff;
 }
 
@@ -197,5 +196,17 @@ a.highlight{
 }
 
 .about h1{
-  font-size: 30px;
+  font=font-family: Ubuntu;
+  font-weight: bold;
+  text-align: center;
+  margin: 80px auto;
+  font-size: 50px;
+}
+
+.about p{
+  margin-left: 100px;
+  margin-right: 100px;
+  font-size: 25px;
+  padding: 10px;
+  border: 3px solid #00dba0;
 }

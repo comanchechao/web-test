@@ -6,6 +6,7 @@
     <h1 class="logo"><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt="djangonautic" /></a></h1>
       <nav>
           <ul>
+            <li> <a href="/about/" class="about">About</a></li>
               {% if user.is_authenticated %}
                 <li>
                     <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
