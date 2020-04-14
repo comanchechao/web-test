@@ -170,3 +170,7 @@ a.highlight{
     border-radius: 4px;
     margin: 10px 0;
 }
+
+.about h1{
+  font-size: 30px;
+}
