@@ -256,18 +256,23 @@ a.highlight{
   font-family: Raleway;
   font-weight: bold;
   color: #d600ff;
-  background: repeating-linear-gradient(91deg,
-     #004585, #6201c5, #80078e, #7300ff, #004393);
-  background-size: 800% 800%;
+  background: linear-gradient(90deg, #0024d7, #0052ae, #2c00ea, #5500ea, #830546, #460374, #0547a6, #0524a6);
+  background-size: 1000% 1000%;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-animation: hue 20s ease infinite;
-animation: hue 20s ease infinite;
+  -webkit-animation: hue 29s ease infinite;
+animation: hue 29s ease infinite;
+
 }
 
 @-webkit-keyframes hue {
-   0%{background-position:0% 50%}
-   50%{background-position:100% 50%}
-   100%{background-position:0% 50%}
+   0%{background-position:0% 53%}
+   50%{background-position:100% 48%}
+   100%{background-position:0% 53%}
+}
+@keyframes hue {
+   0%{background-position:0% 53%}
+   50%{background-position:100% 48%}
+   100%{background-position:0% 53%}
 }
