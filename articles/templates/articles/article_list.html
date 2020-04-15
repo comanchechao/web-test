@@ -2,27 +2,7 @@
 {% load static %}
 
 {% block content%}
-  <header class="wrapper">
-    <h1 class="logo"><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt="djangonautic" /></a></h1>
-      <nav>
-          <ul>
-            <li> <a href="/about/" class="about">About</a></li>
-              {% if user.is_authenticated %}
-                <li>
-                    <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                </li>
-                <li> <a href="{% url 'articles:create'%}" class="highlight">New Article</a></li>
-              {% else %}
-                <li> <a href="{% url 'accounts:login'%}">Login</a></li>
-                <li> <a href="{% url 'accounts:signup'%}">Signup</a></li>
 
-              {% endif %}
-          </ul>
-      </nav>
-  </header>
     <h1>Articles List</h1>
     <div class="articles">
     {% for article in articles %}

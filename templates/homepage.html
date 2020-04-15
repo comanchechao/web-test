@@ -1,11 +1,33 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Homepage</title>
-    </head>
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content%}
+        <header class="wrapper">
+          <h1 class="logo"><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt="djangonautic" /></a></h1>
+            <nav>
+                <ul>
+                  <li> <a href="/about/" class="about">About</a></li>
+                    {% if user.is_authenticated %}
+                      <li>
+                          <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                              {% csrf_token %}
+                              <button type="submit">Logout</button>
+                          </form>
+                      </li>
+                      <li> <a href="{% url 'articles:create'%}" class="highlight">New Article</a></li>
+                    {% else %}
+                      <li> <a href="{% url 'accounts:login'%}">Login</a></li>
+                      <li> <a href="{% url 'accounts:signup'%}">Signup</a></li>
+
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
     <body>
-        <h1>This is the homepage</h1>
-        <p>Welcome to Djangonauts</p>
+      <div class="welcome">
+        <h1>Welcome to <a class="nova" href="{% url 'home'%}">NOVA</a></h1>
+        <p class="articlelist"> <a href="{% url 'articles:list' %}">Articles</a></p>
+
+      </div>
     </body>
-</html>
+{% endblock %}
