@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm, UserChangeForm
 from django.contrib.auth import login, logout, update_session_auth_hash, authenticate
 from django.contrib.sites.shortcuts import get_current_site
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
-from .forms import SignupForm, UserForm, ProfileForm
+from .forms import SignupForm, UserForm, ProfileForm, editprofileform
 from .token import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
@@ -121,3 +121,15 @@ def edit_user(request,pk):
 def profile(request):
     args = {'user': request.user }
     return render(request, 'accounts/profile.html', args)
+
+
+def edit_profile(request):
+    if request.method == 'POST':
+        form = editprofileform(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/profile/')
+    else:
+        form = editprofileform(instance=request.user)
+        return render(request, 'accounts/edit_profile.html', {'form':form})
