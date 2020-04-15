@@ -1,9 +1,10 @@
 body{
-    background-color: #0f121f;
+    background-color: ##280045;
     background-image: url(/static/cyber_city.png);
     height: 100%;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
     color: #fff;
 }
@@ -209,4 +210,60 @@ a.highlight{
   font-size: 25px;
   padding: 10px;
   border: 3px solid #00dba0;
+}
+
+.signup h2{
+  text-align: center;
+  font-weight: bold;
+  margin: 80px auto;
+  font-size: 30px;
+}
+
+
+.welcome h1{
+  font-family: Alata;
+  text-align: center;
+  font-size: 100px;
+}
+
+.articlelist a{
+  color: #00dba0;
+  font-family: Ubuntu;
+  font-size: 50px;
+  text-align: center;
+  padding: 15px;
+  background-color: #0f121f;
+  border-radius: 5px;
+  margin-left: 320px;
+  margin-right: 320px;
+  position: relative;
+  top: 150px;
+
+}
+
+.articlelist a:hover{
+  color: #1b3a85;
+  background-color: #191a19;
+}
+
+
+.nova{
+
+  font-size: 110px;
+  font-family: Raleway;
+  background: linear-gradient(to right, #d600ff 20%, #001eff 40%, #bd00ff 60%, #d600ff 80%);
+  background-size: 200% auto;
+
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shine 1s linear infinite;
+  @keyframes shine {
+    to {
+      background-position: 200% center;
+    }
+}
 }
