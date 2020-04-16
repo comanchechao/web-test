@@ -1,19 +1,32 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
+  <title>Profile</title>
 
 <div class="col s12 m8 offset-m2">
     <div class="card">
       <div class="card-content">
-      <h2 class="flow=text"> Update your information</h2>
+      <h2 class="flow=text">welcome to your station travler</h2>
         <form action="." method="POST"  class="padding">
           {% csrf_token %} {{ noodle_form.as_p }}
           <div class="divider"></div>
           {{ formset.managment_form }}
             {{ formset.as_p }}
-            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">done</i></button>
-            <a href="#" onclick="window.history.back(); return false;" title="Cancel" class="btn-floating waves-effect waves-light red"><i class="material-icons">history</i></a>
-
+            <div class="container" style="margin:0 auto">
+                <img src="{{ user.profile.image.url }}" width="240" align="middle" >
+            </div>
+            <p>Username: {{ user }}</p>
+            <p>first_name: {{ user.first_name }}</p>
+            <p>last_name: {{ user.last_name }}</p>
+            <p>email: {{ user.email }}</p>
+            <p>Bio: {{ user.profile.bio }}</p>
+            <p>birth date: {{ user.profile.birth_date }}</p>
+            <br>
+            <br>
+            <ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+            </ul>
         </form>
 
       </div>
