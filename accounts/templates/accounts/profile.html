@@ -1,38 +1,37 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-  <title>Profile</title>
+<body>
+        <header>
+          <h1>Profile</h1>
+          <h2 class="flow=text">Welcome to your station traveler</h2>
+          <ul>
+            <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        </ul>
 
-<div class="col s12 m8 offset-m2">
-    <div class="card">
-      <div class="card-content">
-      <h2 class="flow=text">welcome to your station travler</h2>
+        </header>
+
         <form action="." method="POST"  class="padding">
           {% csrf_token %} {{ noodle_form.as_p }}
           <div class="divider"></div>
-          {{ formset.managment_form }}
+            {{ formset.managment_form }}
             {{ formset.as_p }}
-            <div class="container" style="margin:0 auto">
-                <img src="{{ user.profile.image.url }}" width="240" align="middle" >
+            <div class="profilepicture>
+                <img src="{{ user.profile.image.url }}" width="240" align="center" >
             </div>
-            <p>Username: {{ user }}</p>
-            <p>first_name: {{ user.first_name }}</p>
-            <p>last_name: {{ user.last_name }}</p>
-            <p>email: {{ user.email }}</p>
-            <p>Bio: {{ user.profile.bio }}</p>
-            <p>birth date: {{ user.profile.birth_date }}</p>
-            <br>
-            <br>
+            <main>
+
             <ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+              <li>Username: {{ user }}</li>
+              <li>first_name: {{ user.first_name }}</li>
+              <li>last_name: {{ user.last_name }}</li>
+              <li>email: {{ user.email }}</li>
+              <li>Bio: {{ user.profile.bio }}</li>
+              <li>birth date: {{ user.profile.birth_date }}</li>
             </ul>
+            </main>
         </form>
-
-      </div>
-
-    </div>
-
-</div>
+</body>
 
 {% endblock %}

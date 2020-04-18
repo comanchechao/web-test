@@ -56,6 +56,8 @@ nav{
 }
 
 nav li{
+    margin-left: auto;
+    margin-right: auto;
     display: inline-block;
     list-style-type: none;
     margin-left: 20px;
@@ -139,12 +141,50 @@ nav button{
     text-align: center;
 }
 
+.signup {
+  margin: 10px auto auto auto ;
+  border: 5px solid #00dba0;
+  padding: 20px;
+}
+
+.signup input, site-form textarea{
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+}
+
+.signupform {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.signupform button{
+    padding: 10px;
+    background: #0f121f;
+    border: 1px solid #00dba0;
+    color: #00dba0;
+    font-size: 20px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.signupform label{
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+  font-family: Alata;
+  font-weight: bold;
+}
+
 
 .site-form
 {
     margin-top: 60px;
     border: 1px solid #00dba0;
-    padding: 20px
+    padding: 20px;
 }
 
 .site-form input, site-form textarea{
@@ -182,7 +222,7 @@ a.highlight{
 .site-form input[type="submit"]{
     background: #00dba0;
     border: 0;
-    color: #ffff343;
+    color: #0f121f;
     font-size: 20px;
     border-radius: 4px;
     margin: 10px 0;
@@ -217,7 +257,7 @@ a.highlight{
 .signup h2{
   text-align: center;
   font-weight: bold;
-  margin: 80px auto;
+  margin: 50px auto;
   font-size: 30px;
 }
 
