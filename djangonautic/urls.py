@@ -10,7 +10,7 @@ from articles import views as article_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^search/', include('search.urls')),
+    url(r'^search/', include(('search.urls'), namespace='search')),
     url(r'^articles/', include('articles.urls')),
     url(r'^accounts/', include('accounts.urls')),
     url(r'^about/$', views.about, name="about"),
@@ -23,7 +23,7 @@ if settings.DEBUG:
     urlpatterns= urlpatterns + static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
 
 
-    
+
 if settings.DEBUG:
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
