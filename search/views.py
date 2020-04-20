@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import Posts
+from articles.models import Article
 from . import urls
 
 def searcharticles(request):
@@ -9,7 +9,7 @@ def searcharticles(request):
         submitbutton= request.GET.get('submit')
         if query is not None:
             lookups= Q(title__icontains=query) | Q(body__icontains=query)
-            results= Posts.objects.filter(lookups).distinct()
+            results= Article.objects.filter(lookups).distinct()
             context={'results': results,
                      'submitbutton': submitbutton}
             return render(request, 'search/search.html', context)
