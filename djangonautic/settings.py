@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'articles',
     'accounts',
     'django.contrib.humanize',
+    'search',
 ]
 
 MIDDLEWARE = [
