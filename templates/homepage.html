@@ -3,31 +3,32 @@
 
 {% block content%}
 
-    <body>
-      <header>
-      <h1 class="logo"><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt="djangonautic" /></a></h1>
-      <div id="navbar">
-        <nav class="navbar navbar-default">
-            <ul class="nav navbar=nav">
-              <li> <a href="/about/" class="about">About</a></li>
-                {% if user.is_authenticated %}
-                  <li>
-                      <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
-                          {% csrf_token %}
-                          <button type="submit">Logout</button>
-                      </form>
-                  </li>
-                  <li> <a href="{% url 'articles:create' %}" class="highlight">New Article</a></li>
-                  <li> <a href="{% url 'accounts:profile' %}">Profile</a></li>
-                {% else %}
-                  <li> <a href="{% url 'accounts:login' %}">Login</a></li>
-                  <li> <a href="{% url 'accounts:signup' %}">Signup</a></li>
+<body>
+  <header>
+    <div class="topnav">
+          <a href="/about/" class="about">About</a>
+            {% if user.is_authenticated %}
 
-                {% endif %}
-            </ul>
-        </nav>
-          </div>
-      </header>
+                <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit">Logout</button>
+                </form>
+
+               <a href="{% url 'articles:create' %}" class="highlight">New Article</a>
+               <a href="{% url 'accounts:profile' %}">Profile</a>
+            {% else %}
+               <a href="{% url 'accounts:login' %}">Login</a>
+               <a href="{% url 'accounts:signup' %}" class="signupbutton">Signup</a>
+
+            {% endif %}
+            <div class="search-container">
+              <form action="/action_page.php">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
+    </div>
+  </header>
 
       <div class="welcome">
         <h1>Welcome to <a class="nova" href="{% url 'home'%}">NOVA</a></h1>
