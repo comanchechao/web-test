@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
     background-color: ##280045;
     background-image: url(/static/cyber_city.png);
@@ -11,7 +15,7 @@ body{
     align-items: center;
 }
 
-body *{
+body{
     font-family: Ubuntu;
     margin: 0;
     text-decoration: none;
@@ -26,24 +30,20 @@ h1, h2, h3, h4, h5{
 div.topnav {
   width: auto;
   overflow: hidden;
-  background-color: #e9e9e9;
+  background-color: #002b70;
 }
 
 .topnav a{
 
   float: left;
   display: block;
-  color: black;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
 
 .topnav a.active {
   background-color: #2196F3;
@@ -102,7 +102,7 @@ div.topnav {
 }
 
 header{
-    display: grid;
+    display: block;
     grid-template-columns: 1fr 1fr;
     padding: 20px 0;
 }
@@ -119,15 +119,26 @@ header{
 
 .signupbutton {
   padding: 7px;
-  color: #0f121f;
-  background-color: #00dba0;
+  color: white;
+  background-color: #c91e43;
   border-radius: 5px;
 }
 
 .signupbutton:hover{
-  color: #ffffff;
-  background-color: #0f121f;
+  color: white;
+  background-color: #6b0017;
 }
+
+.about:hover{
+  color: white;
+  background-color: #006cd1;
+}
+
+.loginbutton:hover{
+  color: white;
+  background-color: #006cd1;
+}
+
 
 
 .articles{

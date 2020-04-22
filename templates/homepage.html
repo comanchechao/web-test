@@ -17,7 +17,7 @@
                <a href="{% url 'articles:create' %}" class="highlight">New Article</a>
                <a href="{% url 'accounts:profile' %}">Profile</a>
             {% else %}
-               <a href="{% url 'accounts:login' %}">Login</a>
+               <a href="{% url 'accounts:login' %}" class="loginbutton">Login</a>
                <a href="{% url 'accounts:signup' %}" class="signupbutton">Signup</a>
 
             {% endif %}
