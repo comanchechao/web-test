@@ -143,8 +143,14 @@ header{
 
 .articles{
     display: grid;
+    margin: auto;
+    width: 80%;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 30px;
+}
+
+.titlearticle{
+  text-align: center;
 }
 
 .article{
@@ -152,6 +158,19 @@ header{
     border: 1px solid #00dba0;
     position: relative;
     padding-bottom: 40px;
+    top: 18px;
+    right: 10px;
+}
+
+.article img{
+  float: right;
+  width: 100px;
+  height: 100px;
+  background: #555;
+}
+
+.clearfix {
+  overflow: auto;
 }
 
 .article h2{
