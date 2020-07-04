@@ -341,21 +341,23 @@ a.highlight{
   color: #dbdbdb;
 }
 
-.articlelist a{
-  transition-duration: 0.4s;
-  color: #00dba0;
-  font-family: Ubuntu;
-  font-size: 50px;
+.articlelist {
   text-align: center;
   padding: 15px;
   background-color: #0f121f;
   border-radius: 5px;
-  margin-left: 320px;
-  margin-right: 320px;
+  margin-left: 650px;
+  margin-right: 650px;
   position: relative;
-  top: 150px;
 
 }
+
+.articlelist a{
+  color: #00dba0;
+  font-family: Ubuntu;
+  font-size: 50px;
+  transition-duration: 0.4s;
+  }
 
 .articlelist a:hover{
   color: #1b3a85;

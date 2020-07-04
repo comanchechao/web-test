@@ -23,8 +23,8 @@
             {% endif %}
             <div class="search-container">
               <form action="{% url 'search:searcharticles' %}" method="GET" value="{{request.GET.q}}">
-              Search <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search Playlists"/>
-              <input type="submit" name="submit" value="Search"/>
+              <input type="text" name="q" value="{{request.GET.q}}" placeholder="Search Playlists"/>
+              <button type="submit" name="button" value="Search"><i class="material-icons">search</i></button>
               </form>
 
 
