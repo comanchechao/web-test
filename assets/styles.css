@@ -117,6 +117,21 @@ header{
     font-size: 16px;
 }
 
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.material-icons {
+
+
+ height: 3px;
+
+}
+
+
 .signupbutton {
   padding: 7px;
   color: white;
@@ -391,4 +406,10 @@ animation: hue 29s ease infinite;
    0%{background-position:0% 53%}
    50%{background-position:100% 48%}
    100%{background-position:0% 53%}
+}
+
+
+
+.searchfeild {
+  width: inherit;
 }
