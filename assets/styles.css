@@ -28,7 +28,9 @@ h1, h2, h3, h4, h5{
 
 
 div.topnav {
-  width: auto;
+  position: fixed;
+  width: 100%;
+  top: 0;
   overflow: hidden;
   background-color: #002b70;
 }
